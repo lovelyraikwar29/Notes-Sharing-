@@ -1,0 +1,111 @@
+{% load static %}
+{% block body %}
+{% include 'navigation.html' %}
+<style>
+    h3 {
+        color: white;
+        text-align: center;
+        margin: 5%;
+    }
+    .N {
+        text-decoration: none;
+        color: purple;
+        font-size: 22px;
+        padding: 10px 15px;
+        position: relative;
+        transition: all 0.5s;
+    }
+
+    .N:before,
+    .N:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: black;
+        transform: scaleX(0);
+        transition: all 0.5s;
+        transform-origin: left;
+    }
+
+    .N:before {
+        top: 0;
+    }
+
+    .N:after {
+        transform-origin: right;
+        bottom: 0;
+    }
+
+    .N:hover {
+        color: purple;
+        font-weight: bold;
+    }
+
+    .N:hover:before,
+    .N:hover:after {
+        background-color: purple;
+        transform: scaleX(1);
+    }
+    .halfcircle {
+        height: 75px;
+        width: 150px;
+        border-radius: 80px 80px 0 0;
+        margin: 0px;
+    }
+
+    .halfcircleBottom {
+        height: 75px;
+        width: 150px;
+        border-radius: 0 0 80px 80px;
+        margin: 0px;
+        background-color: grey;
+    }
+    .box1{
+        font-weight : bold;
+        color : white;
+        text-align:center;
+
+    }
+</style> 
+
+<div class="content-container">
+    <p  class="N">Study Notes Sharing Site</p>
+    <img src="{% static 'images/note5.png' %}" alt="Notes Sharing Site Image">
+</div>
+<h3>Just 4 Steps to Follow </h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="box1">
+                <p class="halfcircle" style="color: white; background-color: #b1ddf1;"><i class="fa fa-user-plus text-white mt-4" style="font-size : 40px "></i></p>
+                <p class="halfcircleBottom " style="color: white; font-size : 20px">Create Account</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="box1">
+                <p class="halfcircle" style="color: white; background-color:  #5b7553;"><i class="fa fa-sign-in-alt text-white mt-4" style="font-size : 40px "></i></p>
+                <p class="halfcircleBottom " style="color: white; font-size : 20px">Login</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="box1">
+                <p class="halfcircle" style="color: white; background-color: #b76e79;"><i class="fa fa-upload text-white mt-4" style="font-size : 40px "></i></p>
+                <p class="halfcircleBottom " style="color: white; font-size : 20px">Upload Notes</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="box1">
+                <p class="halfcircle" style="color: white; background-color: #50c878;"><i class="fa fa-download text-white mt-4" style="font-size : 40px "></i></p>
+                <p class="halfcircleBottom " style="color: white; font-size : 20px">Download Notes</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

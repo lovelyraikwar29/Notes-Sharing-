@@ -1,0 +1,56 @@
+{% load static %}
+{% include 'admin_nav.html' %}
+{% block body %}
+<style>
+.container1{
+    background-color:#b76e79;
+    border-radius:8px;
+
+}
+h2,h4{
+    padding: 10px;
+}
+.mydiv:hover{
+    transform:translateY(-10px);
+}
+</style>
+<br> <br>
+ <div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-3 text-center mydiv">
+            <div class="container1">
+                <h2 style=color:white; class="">{{ P }}</h2>
+                <a href="{% url 'pending_notes'%}"><h4>Pending Notes </h4></a>
+            </div>
+        </div> 
+
+        <div class="col-sm-3 text-center mydiv">
+            <div class="container1">
+                <h2 style=color:white; class="">{{ A }}</h2>
+                <a href="{% url 'accepted_notes'%}"><h4>Accepted Notes </h4></a>
+            </div>
+        </div> 
+
+        <div class="col-sm-3 text-center mydiv">
+            <div class="container1">
+                <h2 style=color:white; class="">{{ R}}</h2>
+                <a href="{% url 'rejected_notes'%}"><h4>Rejected Notes </h4></a>
+            </div>
+        </div> 
+
+        <div class="col-sm-3 text-center mydiv">
+            <div class="container1">
+                <h2 style=color:white; class="">{{ All }}</h2>
+                <a href="{% url 'view_all_notes'%}"><h4>All Notes </h4></a>
+            </div>
+        </div> 
+    </div>
+</div>  
+
+
+<footer class="container mt-5 text-center">
+    <p style="font-size : 30pt; color : white; font-weight : bold"> Copyright &copy; 
+        <script> document.write(new Date().getFullYear());</script> 
+         All Rights Reserved |</span></p>
+</footer>
+{% endblock %}

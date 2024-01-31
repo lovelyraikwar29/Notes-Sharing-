@@ -1,0 +1,152 @@
+{% load static %}
+{% block body %}
+    {% include 'user_nav.html' %}
+
+    <hr>
+    <style>
+        .btn-dark-blue {
+            background-color: #001f3f; /* Dark blue color code */
+            color: #ffffff; /* White text color */
+        }
+    </style>
+    <div class="container mt-5">
+        <h2 class="text-center" style="color:white"> Upload Notes</h2>
+        <div class="row">
+
+            <div class="col-sm-6">
+                <hr>
+                <form method="post" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <label style="color:white"> Branch</label>
+                    <select class="form-control" name="branch">
+                        <option value="">-------------------------Select Branch-------------------------</option>
+                        <option value="BCA">BCA</option>
+                        <option value="BBA">BBA</option>
+                        <option value="Btech">Btech(Computer Science)</option>
+                        <option value="BCom">BCom.</option>
+                    </select>
+
+                    <label style="color:white"> Subject </label>
+                    <input type="text" class="form-control" placeholder="Enter Your Subject" name="subject">
+
+                    <label style="color:white"> Notes File </label>
+                    <input type="file" class="form-control"  name="notesfile" required>
+
+                    <label style="color:white"> File Type</label>
+                    <select class="form-control" name="filetype">
+                        <option value="">-------------------------Select File Type-------------------------</option>
+                        <option value="PDF">PDF</option>
+                        <option value="PPT">PPT</option>
+                        <option value="DOC/DOCX">DOC/DOCX</option>
+                        <option value="MSWord">MSWord</option>
+                        <option value="TXT">TXT</option>
+                        <option value="Image">Image</option>
+                        <option value="ZipFILE">ZipFILE</option>
+                    </select><br>
+
+                    <label style="color:white"> Description </label>
+                    <textarea class="col-sm-12" placeholder="Enter Description" name="description"></textarea>
+
+                    <center>
+                    <input type="submit" class="btn btn-dark-blue mt-2" value="SUBMIT">
+                    </center>
+                    
+                </form>
+            </div>
+
+            <div class="col-sm-6">
+                <img src="{% static 'images/upload1.jpg' %}" style="width:90%" class="mt-5">
+            </div>
+        </div>
+    </div>
+
+    {% if d.error == "no" %}
+        <script>
+            alert('File Uploaded Successfully');
+        </script>
+    {% endif %}
+
+    {% if d.error == "yes" %}
+        <script>
+            alert('Something Went Wrong, Try Again ');
+        </script>
+    {% endif %}
+{% endblock %}
+
+{% comment %} {% load static %}
+{% block body %}
+    {% include 'user_nav.html' %}
+
+    <hr>
+    <style>
+        .btn-dark-blue {
+            background-color: #001f3f; /* Dark blue color code */
+            color: #ffffff; /* White text color */
+        }
+    </style>
+    <div class="container mt-5">
+        <div class="row">
+
+            <div class="col-sm-6">
+                <h2 class="text-center" style="color:white"> Upload Notes</h2>
+                <hr>
+                <form method="post">
+                    {% csrf_token %}
+
+                    <label style="color:white"> Branch</label>
+                    <select class="form-control" name="branch">
+                        <option value="">-------------------------Select Branch-------------------------</option>
+                        <option value="BCA">BCA</option>
+                        <option value="BBA">BBA</option>
+                        <option value="Btech">Btech(Computer Science)</option>
+                        <option value="BCom">BCom.</option>
+                    </select>
+
+                    <label style="color:white"> Subject </label>
+                    <input type="text" class="form-control" placeholder="Enter Your Subect" name="subject">
+
+                    <label style="color:white"> Notes File </label>
+                    <input type="text" class="form-control"  name="notesfile">
+
+                    <label style="color:white"> File Type</label>
+                    <select class="form-control" name="filetype">
+                        <option value="">-------------------------Select File Type-------------------------</option>
+                        <option value="PDF">PDF</option>
+                        <option value="PPT">PPT</option>
+                        <option value="DOC/DOCX">DOC/DOCX</option>
+                        <option value="MSWord">MSWord</option>
+                        <option value="TXT">TXT</option>
+                        <option value="Image">Image</option>
+                        <option value="ZipFILE">ZipFILE</option>
+                    </select>
+
+                    <label style="color:white"> description </label>
+                    <textarea placeholder="Enter Description"> </textarea>
+
+                    <input type="submit" class="btn btn-dark-blue mt-2" value="SUBMIT">
+                </form>
+            </div>
+
+            <div class="col-sm-6">
+                <h2 class="text-center" style="color:white"> Upload Notes</h2>
+                <hr>
+                <center style="color: blue;"> <a href="{% url 'user_login' %}"
+                        class="btn btn-dark-blue mt-5">Create an Account</a></center>
+            </div>
+        </div>
+    </div>
+
+    {% if d.error == "no" %}
+        <script>
+            alert('File Uplaoded Successfully');
+        </script>
+    {% endif %}
+
+    {% if d.error == "yes" %}
+        <script>
+            alert('Something Went Wrong, Try Again ');
+        </script>
+    {% endif %}
+{% endblock %}
+ {% endcomment %}

@@ -1,0 +1,59 @@
+{% load static %}
+{% block body %}
+{% include 'user_nav.html' %}
+<style>
+    b{
+        color:white;
+    }
+    
+</style>
+<div class="col-12 container mt-5">
+    <h2 style="color: white; background-color: #b76e79;" class="text-center">Profile</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <b> Full Name:</b>
+        </div>
+        <div class="col-md-6" style="text-transform: capitalize">
+            <b>{{data.user.first_name}}</b> <b>{{data.user.last_name}}</b>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <b> Email Id</b>
+        </div>
+        <div class="col-md-6" >
+            <b>{{data.user.username}}</b>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <b> Conatct</b>
+        </div>
+        <div class="col-md-6" >
+            <b>{{data.contact}}</b>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <b> Branch</b>
+        </div>
+        <div class="col-md-6" >
+            <b>{{data.branch}}</b>
+        </div>
+    </div>
+    <hr>
+
+    <div  style="text-align: center;">
+        <a href="{% url 'edit_profile' %}" style="color:white; width:50%; background-color: #241571;" 
+        class="btn mt-5">Edit Profile</a>
+    </div>
+    
+
+</div>
+{% endblock %}

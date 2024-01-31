@@ -1,0 +1,104 @@
+{% load static %}
+{% block body %}
+{% include 'admin_nav.html' %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap4.min.css">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
+
+<hr>
+<style>
+    body {
+        background: #333;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        color: white; /* Set font color */
+    }
+
+    h2 {
+        color: white; /* Set font color */
+    }
+
+    table {
+        background-color: #333; /* Set table background color */
+        color: white; /* Set table text color */
+    }
+
+    th, td {
+        border-color: white; /* Set table border color */
+    }
+
+    .btn-danger {
+        background-color: #d9534f; /* Bootstrap's default danger color */
+        color: white; /* Set button text color */
+        border-color: #d9534f; /* Set button border color */
+    }
+
+    .btn-danger:hover {
+        background-color: #c9302c; /* Bootstrap's default hover color for danger */
+        color: white; /* Set button text color on hover */
+        border-color: #ac2925; /* Set button border color on hover */
+    }
+</style>
+<div class="container mt-5">
+    <h2 class="text-center"> View Accepted Notes</h2>
+    <hr>
+    <table class="table table-bordered" id="example">
+        <thead>
+            <tr style="color:white;">
+                <th> Serial No.</th>
+                <th> Uploading By</th>
+                <th> Uploading Date</th>
+                <th> Branch </th>
+                <th> Subject</th>
+                <th> Download Notes</th>
+                <th> File Type</th>
+                <th> Status</th>
+                <th> Assign Status</th>
+                <th> Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in notes %}
+            <tr style="color:white;">
+                <td> {{forloop.counter}}</td>
+                <td> {{i.user.username}}</td>
+                <td> {{i.uploadingdate}}</td>
+                <td> {{i.branch}}</td>
+                <td> {{i.subject}}</td>
+                <td>
+                    {% if i.notesfile %}
+                        <a href="{{ i.notesfile.url }}" download> DOWNLOAD</a>
+                    {% else %}
+                        No file associated
+                    {% endif %}
+                </td>
+                <td> {{i.filetype}}</td>
+                <td> {{i.status}}</td>
+                <td>
+                    <a href="{% url 'assign_status' pid=i.id %}" class="btn btn-success" >Assign&nbsp;Status</a>
+                </td>
+                <td>
+                    <a href="{% url 'delete_notes' pid=i.id %}" class="btn btn-danger" onclick="return confirm('Confirm delete')">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
+
+

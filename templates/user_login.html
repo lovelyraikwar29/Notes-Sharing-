@@ -1,0 +1,49 @@
+{% load static %}
+{% block body %}
+{% include 'navigation.html' %}
+{% block content %}
+    {% if error == "no" %}
+    <script>
+        alert('Logged In Successfully');
+        window.location.href = '{% url "profile" %}';
+    </script>
+    {% endif %}
+
+    {% if error == "yes" %}
+    <script>
+        alert('Invalid Login Credentials, Try Again ');
+    </script>
+    {% endif %}
+<hr>
+<style>
+    .btn-dark-blue {
+        background-color: #001f3f; /* Dark blue color code */
+        color: #ffffff; /* White text color */
+    }
+</style>
+<div class="container mt-5">
+<div class="row">
+    <div class="col-sm-6" >
+        <h2 class="text-center" style="color:white"> New User</h2>
+        <hr >
+        <p style="color:white">By creating an account with our website, <br>u will be able to move through the notes uploading and downloading process and more....</p>
+        <center style="color: blue;"> <a href="{% url 'signup' %}" class="btn btn-dark-blue mt-5">Create an Account</a></center>
+    </div>
+    <div class="col-sm-6" >
+        <h2 class="text-center" style="color:white"> User Login</h2>
+        <hr>
+        <form method="post">
+            {% csrf_token %}
+            
+            <label style="color:white"> Email Address </label>
+            <input type="email" class="form-control" placeholder="Enter Email Id" name="emailid">
+            <label style="color:white"> Password </label>
+            <input type="password" class="form-control" placeholder="Enter Password" name="pwd">
+            <input type="submit" class="btn btn-dark-blue mt-2" value="LOGIN">
+
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}
+{% endblock %}

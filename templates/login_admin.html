@@ -1,0 +1,99 @@
+{% load static %}
+{% block body %}
+
+{% block content %}
+    {% if error == "no" %}
+    <script>
+        alert('Logged In Successfully');
+        window.location.href = '{% url "admin_home" %}';
+    </script>
+    {% endif %}
+
+    {% if error == "yes" %}
+    <script>
+        alert('Invalid Login Credentials, Try Again ');
+    </script>
+    {% endif %}
+
+    {% include 'navigation.html' %}
+    <hr>
+    <style>
+        .btn-dark-blue {
+            background-color: #001f3f; /* Dark blue color code */
+            color: #ffffff; /* White text color */
+        }
+    </style>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="{% static 'images/admin.jpg ' %}" class="img-thumbnail my-1" style="width:90%; height:340px">
+            </div>
+
+            <div class="col-sm-6">
+                <h2 class="text-center" style="color:white"> Admin Login</h2>
+                <hr>
+                <form method="post">
+                    {% csrf_token %}
+                    <label style="color:white"> Email Address </label>
+                    <input type="text" class="form-control" placeholder="Enter Username" name="uname">
+                    <label style="color:white"> Password </label>
+                    <input type="password" class="form-control" placeholder="Enter Password" name="pwd">
+                    <center><input type="submit" class="btn btn-dark-blue mt-2" value="LOGIN"></center>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% endblock %}
+{% comment %} {% load static %}
+{% block body %}
+
+
+{% block content %}
+    {% if error == "no" %}
+    <script>
+        alert('Logged In Successfully');
+        window.location.href = '{% url "admin_home" %}';
+    </script>
+    {% endif %}
+
+    {% if error == "yes" %}
+    <script>
+        alert('Invalid Login Credentials, Try Again ');
+    </script>
+    {% endif %}
+{% endblock %}
+
+
+
+{% include 'navigation.html' %}
+<hr>
+<style>
+    .btn-dark-blue {
+        background-color: #001f3f; /* Dark blue color code */
+        color: #ffffff; /* White text color */
+    }
+</style>
+<div class="container mt-5">
+<div class="row">
+
+    <div class="col-sm-6 " >
+        <img src="{% static 'images/admin.jpg ' %}" class="img-thumbanail my-1" style="width:90%; height:340px">
+    </div>
+
+    <div class="col-sm-6" >
+        <h2 class="text-center" style="color:white"> Admin Login</h2>
+        <hr>
+        <form method="post">
+            {% csrf_token %}
+            <label style="color:white"> Email Address </label>
+            <input type="text" class="form-control" placeholder="Enter Username" name="uname">
+            <label style="color:white"> Password </label>
+            <input type="password" class="form-control" placeholder="Enter Password" name="pwd">
+            <center><input type="submit" class="btn btn-dark-blue mt-2" value="LOGIN"></center>
+
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %} {% endcomment %}

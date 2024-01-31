@@ -1,0 +1,29 @@
+{% load static %}
+{% block body %}
+{% include 'navigation.html' %}
+<div style="background-color : #b76e79; width:100%;height 100px; text-align: center;">
+    <h3 class="text-white container pt-3" > About Us</h3>
+</div>
+<br>
+<div class ="container">
+    <img src="{% static 'images/aboutus.jpg' %}" style="width:100%; height: 400px; text-align: center; ">
+    <h3 class="text-white container " > About Us</h3>
+    <hr>
+    <p style="color:white"> Welcome to <b>Quick Notes</b> - Your Hub for Notes Sharing!<br>
+
+        At <b>Quick Notes</b>, we're on a mission to simplify learning through collaborative note-sharing. Our platform is designed to empower individuals, fostering a community-driven approach to education.<br>
+        
+        Our Mission<br>
+        Empowering Education: Making learning accessible to all.<br>
+        Collaborative Learning: A space for shared knowledge and growth.<br>
+        What Sets Us Apart<br>
+        User-Friendly: Easy note sharing for everyone.<br>
+        Privacy and Security: Your data, our priority.<br>
+        Meet the Team<br>
+        [Lovely Raikwar] - Founder & CEO<br>
+        [Hello! I'm Lovely, a BCA student from SGTBIMIT College, and I'm passionate about simplifying education through technology. Inspired by the power of collaborative learning, I founded [Your Website Name] to create a space where individuals like you can easily share and access notes, fostering a community dedicated to knowledge exchange. Join us on this journey towards a richer and more accessible learning experience!]<br>
+        
+        
+        Join [<b>Quick Notes</b>] for a richer learning experience!<br> </p>
+</div>
+{% endblock %}

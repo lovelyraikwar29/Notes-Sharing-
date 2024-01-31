@@ -1,0 +1,123 @@
+{% load static %}
+{% block body %}
+{% include 'admin_nav.html' %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap4.min.css">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
+
+<hr>
+<style>
+    body {
+        background: #333;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        color: white; /* Set font color */
+    }
+
+    h2 {
+        color: white; /* Set font color */
+    }
+
+    table {
+        background-color: #333; /* Set table background color */
+        color: white; /* Set table text color */
+    }
+
+    th, td {
+        border-color: white; /* Set table border color */
+    }
+
+    .btn-danger {
+        background-color: #d9534f; /* Bootstrap's default danger color */
+        color: white; /* Set button text color */
+        border-color: #d9534f; /* Set button border color */
+    }
+
+    .btn-danger:hover {
+        background-color: #c9302c; /* Bootstrap's default hover color for danger */
+        color: white; /* Set button text color on hover */
+        border-color: #ac2925; /* Set button border color on hover */
+    }
+    .btn-primary {
+        background-color: #007bff; /* Bootstrap's default primary color */
+        color: white; /* Set button text color */
+        border-color: #007bff; /* Set button border color */
+    }
+    
+    .btn-primary:hover {
+        background-color: #0056b3; /* Bootstrap's default hover color for primary */
+        color: white; /* Set button text color on hover */
+        border-color: #004380; /* Set button border color on hover */
+    }
+</style>
+{% comment %} <div class="container mt-5">
+    <h2 class="text-center"> Assign Status</h2>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        <label> Notes Id</label>
+        <input type="text" name="notesid" class="form-control" value="{{notes.id}}" readonly >
+
+        
+        <label> Status</label>
+        <select name="status" class="form-control">
+            <option value="Accept">Accept</option>
+            <option value="Reject">Reject</option>
+        </select>
+    </form>
+    <br>
+    <center>
+        <input type="submit" value="Submit" class="btn btn-primary form_control" style="width:25%">
+    </center>
+    
+    
+
+</div> {% endcomment %}
+
+<div class="container mt-5">
+    <h2 class="text-center">Assign Status</h2>
+    <hr>
+    <form method="post" action="{% url 'assign_status' notes.id %}">
+        {% csrf_token %}
+        <label> Notes Id</label>
+        <input type="text" name="notesid" class="form-control" value="{{notes.id}}" readonly>
+
+        <label> Status</label>
+        <select name="status" class="form-control">
+            <option value="Accept">Accept</option>
+            <option value="Reject">Reject</option>
+        </select>
+
+        <br>
+        <center>
+            <input type="submit" value="Submit" class="btn btn-primary form-control" style="width:25%">
+        </center>
+    </form>
+</div>
+
+{% if error == "no" %}
+<script>
+    alert("Status Changed Successfully");
+    window.location = ('{% url 'all_notes' %}');
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Somthing Went Wrong,Try Again....");
+</script>
+{% endif %}
+{% endblock %}
+
+
